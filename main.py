@@ -1,33 +1,15 @@
-path_to_file = "books/frankenstein.txt"
-
-
-def count_caracters(text):
-  char_count = {}
-  text = text.lower()
-  for char in text:
-    if char in char_count:
-      char_count[char] += 1
-    else:
-      char_count[char] = 1
-  return char_count
-      
-def make_report(dict):
-  list_dict = [{'char': k, 'num': v} for k,v in dict.items()]
-  return list_dict
-        
-      
+import sys
+from stats import get_num_words
 def main():
-    with open(path_to_file) as f:
-        file_contents = f.read()
-    string = str(file_contents)    
-    words = string.split() 
-    conteo = len(words)
-    result = count_caracters(file_contents)
-    list = make_report(result)
-    print(result)   
-    print(conteo)
-    print(list)
-    
-    
-    
-main()
+    # Verificar que se proporcione la ruta del libro como argumento
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    # Obtener la ruta del libro desde los argumentos de línea de comandos
+    path_to_file = sys.argv[1]
+    get_num_words(path_to_file)
+
+# Ejecutar la función principal
+if __name__ == "__main__":
+    main()

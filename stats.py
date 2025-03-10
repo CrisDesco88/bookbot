@@ -1,3 +1,4 @@
+import sys
 def count_caracters(text):
     """
     Cuenta la frecuencia de cada carácter en un texto.
@@ -50,5 +51,7 @@ def get_num_words(path_to_file):
 
     except FileNotFoundError:
         print(f"Error: El archivo '{path_to_file}' no fue encontrado.")
+        sys.exit(1)
     except Exception as e:
         print(f"Error inesperado: {e}")
+        sys.exit(1)
